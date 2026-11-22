@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Saturday 21 November 2026 — The World in One Day</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #fdf6e3; }
+  .page {
+    width: 1024px; margin: 0 auto; background: #fdf6e3; color: #111;
+    padding: 8px 24px 6px 24px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  /* ---------- masthead ---------- */
+  .masthead { text-align: center; border-bottom: 4px double #111; padding-bottom: 6px; }
+  .kicker { font-size: 11px; letter-spacing: 6px; font-weight: 700; color: #c8102e; }
+  .masthead h1 { font-family: Georgia, 'Times New Roman', Times, serif; font-size: 36px; font-weight: 900; line-height: 1.05; letter-spacing: 0.5px; margin: 2px 0 3px 0; }
+  .masthead .sub { font-size: 11px; letter-spacing: 2.5px; font-weight: 700; color: #333; }
+  .masthead .sub b { color: #c8102e; }
+
+  /* ---------- stats bar ---------- */
+  .stats { border-bottom: 2px solid #111; padding: 6px 0 5px 0; }
+  .stats .shead { font-size: 9px; letter-spacing: 2px; font-weight: 800; color: #c8102e; margin-bottom: 4px; }
+  .statsrow { display: flex; justify-content: space-between; }
+  .stat { text-align: center; flex: 1; border-left: 1px solid #bbb; padding: 0 4px; }
+  .stat:first-of-type { border-left: none; }
+  .stat .num { font-family: Georgia, 'Times New Roman', Times, serif; font-size: 22px; font-weight: 900; line-height: 1; }
+  .stat .num.red { color: #c8102e; }
+  .stat .num.blue { color: #1e4fa3; }
+  .stat .lab { font-size: 9px; letter-spacing: 0.5px; color: #444; margin-top: 2px; line-height: 1.25; font-weight: 700; text-transform: uppercase; }
+
+  /* ---------- section headers ---------- */
+  .sechead { display: flex; align-items: baseline; gap: 10px; border-bottom: 2px solid #111; margin: 7px 0 5px 0; padding-bottom: 2px; }
+  .sechead .t { font-size: 12.5px; font-weight: 900; letter-spacing: 2.5px; }
+  .sechead .t .red { color: #c8102e; }
+  .sechead .r { font-size: 10.5px; color: #555; letter-spacing: 0.5px; }
+
+  /* ---------- leads ---------- */
+  .leads { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0 16px; }
+  .lead { border-right: 1px solid #bbb; padding-right: 16px; }
+  .lead:last-child { border-right: none; padding-right: 0; }
+  .tag { font-size: 10.5px; font-weight: 900; letter-spacing: 2px; color: #c8102e; text-transform: uppercase; }
+  .tag.blue { color: #1e4fa3; }
+  .lead h2 { font-family: Georgia, 'Times New Roman', Times, serif; font-size: 19px; line-height: 1.15; font-weight: 900; margin: 3px 0 5px 0; }
+  .lead .art { width: 100%; height: 88px; background: #f3ead0; border: 1px solid #999; margin-bottom: 5px; display: block; }
+  .lead p { font-size: 11.5px; line-height: 1.4; color: #222; }
+
+  /* ---------- second-tier band ---------- */
+  .band { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0 16px; border-top: 2px solid #111; margin-top: 8px; padding-top: 7px; }
+  .banditem { border-right: 1px solid #bbb; padding-right: 14px; overflow: hidden; }
+  .banditem:last-child { border-right: none; padding-right: 0; }
+  .bandicon { float: left; width: 64px; height: 64px; margin: 2px 8px 2px 0; border: 1px solid #999; display: block; }
+  .banditem h3 { font-family: Georgia, 'Times New Roman', Times, serif; font-size: 14.5px; line-height: 1.2; font-weight: 900; margin: 2px 0 3px 0; }
+  .banditem p { font-size: 11px; line-height: 1.4; color: #222; }
+
+  /* ---------- smaller stories grid ---------- */
+  .grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 7px 16px; }
+  .gitem { border-top: 1px solid #bbb; padding-top: 6px; overflow: hidden; }
+  .gicon { float: left; width: 76px; height: 76px; margin: 2px 9px 2px 0; border: 1px solid #999; display: block; }
+  .gitem h3 { font-family: Georgia, 'Times New Roman', Times, serif; font-size: 14.5px; line-height: 1.2; font-weight: 900; margin: 2px 0 3px 0; }
+  .gitem p { font-size: 11px; line-height: 1.4; color: #222; }
+
+  /* ---------- map ---------- */
+  .mapwrap { display: flex; gap: 14px; align-items: stretch; }
+  .mapsvg { width: 620px; flex-shrink: 0; background: #f3ead0; border: 1px solid #999; display: block; }
+  .legend { flex: 1; }
+  .legend .lt { font-size: 10.5px; font-weight: 900; letter-spacing: 2px; border-bottom: 1px solid #999; padding-bottom: 2px; margin-bottom: 4px; }
+  .legend .lcounts { font-size: 11px; line-height: 1.45; color: #222; }
+  .legend .lcounts b { font-family: Georgia, serif; }
+  .legend .lnote { font-size: 10px; color: #555; line-height: 1.35; margin-top: 4px; }
+  .legend .lnote .dotr { color: #c8102e; font-weight: 900; }
+  .legend .lnote .dotb { color: #1e4fa3; font-weight: 900; }
+
+  /* ---------- also list (3 columns) ---------- */
+  .alsowrap { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0 22px; }
+  .alsowrap ol { list-style: none; counter-reset: also; }
+  .alsowrap li { counter-increment: also; font-size: 11px; line-height: 1.32; padding: 2px 0; border-bottom: 1px dotted #bbb; color: #222; }
+  .alsowrap li::before { content: counter(also, decimal-leading-zero) " "; font-weight: 900; color: #c8102e; font-family: Georgia, serif; margin-right: 4px; }
+  .alsowrap ol.mid { counter-reset: also 8; }
+  .alsowrap ol.right { counter-reset: also 16; }
+
+  /* ---------- footer ---------- */
+  .datecheck { border-top: 3px solid #111; margin-top: 6px; padding-top: 5px; font-size: 10.5px; line-height: 1.4; color: #222; }
+  .datecheck b { color: #c8102e; letter-spacing: 1.5px; }
+  .datecheck .fine { color: #555; font-size: 10px; margin-top: 2px; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- MASTHEAD -->
+  <div class="masthead">
+    <div class="kicker">THE WORLD IN ONE DAY</div>
+    <h1>Saturday 21 November 2026</h1>
+    <div class="sub"><b>35 STORIES</b> &middot; 7 REGIONS &middot; THE WORLD IN ONE DAY</div>
+  </div>
+
+  <!-- STATS BAR -->
+  <div class="stats">
+    <div class="shead">THE DAY IN NUMBERS</div>
+    <div class="statsrow">
+    <div class="stat"><div class="num">110+</div><div class="lab">missiles at Ukraine</div></div>
+    <div class="stat"><div class="num">400+</div><div class="lab">drones fired</div></div>
+    <div class="stat"><div class="num">6.9</div><div class="lab">Peru quake</div></div>
+    <div class="stat"><div class="num">109&ndash;0</div><div class="lab">Denmark vote</div></div>
+    <div class="stat"><div class="num red">&minus;3.7%</div><div class="lab">S&amp;P 500</div></div>
+    <div class="stat"><div class="num red">&minus;5.06%</div><div class="lab">Nikkei</div></div>
+    <div class="stat"><div class="num blue">$2T</div><div class="lab">Anthropic cap</div></div>
+    </div>
+  </div>
+
+  <!-- THREE LEADS: Mexico, Markets, COP31 -->
+  <div class="leads">
+    <!-- Lead 1: Mexico / cartel boss captured -->
+    <div class="lead">
+      <div class="tag">Mexico &middot; Sinaloa</div>
+      <h2>FBI most-wanted cartel boss captured</h2>
+      <svg class="art" viewBox="0 0 300 88" xmlns="http://www.w3.org/2000/svg">
+        <rect x="0" y="0" width="300" height="88" fill="#14181f"/>
+        <rect x="2.5" y="2.5" width="295" height="83" fill="none" stroke="#c9a227" stroke-width="1"/>
+        <text x="150" y="13" text-anchor="middle" font-family="Arial" font-size="9" letter-spacing="2.5" fill="#c9a227" font-weight="bold">FBI MOST WANTED</text>
+        <polygon points="48,20 54,38 73,38 58,50 64,68 48,57 32,68 38,50 23,38 42,38" fill="#c9a227" stroke="#8a6d1a" stroke-width="1.5"/>
+        <circle cx="48" cy="46" r="7" fill="#14181f"/>
+        <circle cx="48" cy="46" r="3" fill="#c9a227"/>
+        <text x="182" y="44" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="20" font-weight="900" fill="#ffffff">EL CHAPO ISIDRO</text>
+        <text x="182" y="61" text-anchor="middle" font-family="Arial" font-size="10" font-weight="bold" fill="#c9a227" letter-spacing="1">CARTEL BOSS &mdash; CAPTURED</text>
+        <rect x="0" y="70" width="300" height="18" fill="#c8102e"/>
+        <text x="150" y="83" text-anchor="middle" font-family="Arial" font-size="11" font-weight="900" fill="#ffffff" letter-spacing="1">CAUGHT IN SINALOA &mdash; VIOLENCE FOLLOWED</text>
+      </svg>
+      <p>Mexican forces captured &ldquo;El Chapo Isidro&rdquo;, an FBI most-wanted cartel boss, in Sinaloa. Violence followed.</p>
+    </div>
+
+    <!-- Lead 2: Markets / chart -->
+    <div class="lead">
+      <div class="tag blue">Markets</div>
+      <h2>AI sell-off sinks markets</h2>
+      <svg class="art" viewBox="0 0 300 88" xmlns="http://www.w3.org/2000/svg">
+        <rect x="0" y="0" width="150" height="88" fill="#2b0e0e"/>
+        <rect x="150" y="0" width="150" height="88" fill="#0e2a12"/>
+        <line x1="150" y1="0" x2="150" y2="88" stroke="#c9a227" stroke-width="2"/>
+        <text x="75" y="14" text-anchor="middle" font-family="Arial" font-size="9" letter-spacing="2" fill="#ff9a9a" font-weight="bold">S&amp;P 500</text>
+        <text x="75" y="42" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="30" font-weight="900" fill="#ffffff">&minus;3.7%</text>
+        <polyline points="14,50 44,59 74,68 104,78 128,86" fill="none" stroke="#ff5a5a" stroke-width="3"/>
+        <polygon points="128,78 140,88 122,88" fill="#ff5a5a"/>
+        <text x="58" y="86" text-anchor="middle" font-family="Arial" font-size="9" font-weight="bold" fill="#ffb3b3">NIKKEI &minus;5.06%</text>
+        <text x="225" y="15" text-anchor="middle" font-family="Arial" font-size="9" letter-spacing="2" fill="#7ddb8a" font-weight="bold">ANTHROPIC IPO</text>
+        <text x="225" y="50" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="36" font-weight="900" fill="#4ade80">$2T</text>
+        <text x="225" y="67" text-anchor="middle" font-family="Arial" font-size="11" font-weight="bold" fill="#ffffff" letter-spacing="1">TRILLION</text>
+        <text x="225" y="83" text-anchor="middle" font-family="Arial" font-size="10.5" font-weight="bold" fill="#d8ffd8">$81.3B RAISED</text>
+        <circle cx="150" cy="51" r="14" fill="#c9a227" stroke="#0f1c2e" stroke-width="2"/>
+        <text x="150" y="55.5" text-anchor="middle" font-family="Arial" font-size="11" font-weight="900" fill="#0f1c2e">VS</text>
+      </svg>
+      <p>S&amp;P 500 fell 3.7%, Nikkei 5.06%, Taiwan 6.2% on AI fears. Anthropic debuted at $2T, raising $81.3B &mdash; the biggest ever.</p>
+    </div>
+
+    <!-- Lead 3: COP31 / deadline -->
+    <div class="lead">
+      <div class="tag">Climate &middot; Antalya</div>
+      <h2>COP31 runs past deadline, no deal</h2>
+      <svg class="art" viewBox="0 0 300 88" xmlns="http://www.w3.org/2000/svg">
+        <rect x="0" y="0" width="300" height="88" fill="#0c2b2e"/>
+        <rect x="2.5" y="2.5" width="295" height="83" fill="none" stroke="#c9a227" stroke-width="1"/>
+        <text x="150" y="13" text-anchor="middle" font-family="Arial" font-size="9" letter-spacing="2.5" fill="#c9a227" font-weight="bold">ANTALYA &middot; CLIMATE TALKS</text>
+        <rect x="32" y="20" width="16" height="44" rx="8" fill="#ffffff" stroke="#333" stroke-width="1.5"/>
+        <rect x="35" y="28" width="10" height="32" fill="#c8102e"/>
+        <circle cx="40" cy="68" r="12" fill="#c8102e" stroke="#ffffff" stroke-width="2"/>
+        <circle cx="40" cy="68" r="5" fill="#ff6b6b"/>
+        <circle cx="264" cy="32" r="14" fill="#ffffff" stroke="#333" stroke-width="2"/>
+        <line x1="264" y1="32" x2="264" y2="21" stroke="#333" stroke-width="2.5"/>
+        <line x1="264" y1="32" x2="273" y2="36" stroke="#c8102e" stroke-width="2.5"/>
+        <text x="160" y="44" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="20" font-weight="900" fill="#ffffff">PAST DEADLINE</text>
+        <text x="160" y="66" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="25" font-weight="900" fill="#f5c518">NO DEAL</text>
+        <rect x="0" y="70" width="300" height="18" fill="#c9a227"/>
+        <text x="150" y="83" text-anchor="middle" font-family="Arial" font-size="11" font-weight="900" fill="#0c2b2e" letter-spacing="1">FOSSIL FUELS: THE STICKING POINT</text>
+      </svg>
+      <p>Climate talks in Antalya ran past their deadline over fossil fuels, with no deal reached.</p>
+    </div>
+  </div>
+
+  <!-- SECOND TIER: Shenzhen, ICJ, Kryvyi Rih/Poland -->
+  <div class="band">
+    <div class="banditem">
+      <svg class="bandicon" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg">
+        <rect width="72" height="72" fill="#0f1c2e"/>
+        <rect x="6" y="8" width="18" height="12" fill="#b22234"/><rect x="6" y="11" width="18" height="1.6" fill="#fff"/><rect x="6" y="15" width="18" height="1.6" fill="#fff"/><rect x="6" y="8" width="7" height="6" fill="#3c3b6e"/>
+        <rect x="27" y="8" width="18" height="12" fill="#de2910"/><polygon points="0,-3 0.9,-0.9 3,-0.9 1.1,0.4 1.8,2.4 0,1.1 -1.8,2.4 -1.1,0.4 -3,-0.9 -0.9,-0.9" transform="translate(33,14)" fill="#ffde00"/>
+        <rect x="48" y="8" width="18" height="12" fill="#fff"/><rect x="48" y="12" width="18" height="4" fill="#0039a6"/><rect x="48" y="16" width="18" height="4" fill="#d52b1e"/>
+        <text x="36" y="58" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="34" font-weight="900" fill="#f5c518">?</text>
+      </svg>
+      <div class="tag">Shenzhen &middot; APEC</div>
+      <h3>Trump, Xi and Putin sign peace declaration</h3>
+      <p>Trump, Xi and Putin signed a four-point peace declaration that says nothing about Ukraine.</p>
+    </div>
+    <div class="banditem">
+      <svg class="bandicon" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg">
+        <rect width="72" height="72" fill="#3d0c0c"/>
+        <line x1="36" y1="12" x2="36" y2="54" stroke="#c9a227" stroke-width="3"/>
+        <line x1="14" y1="20" x2="58" y2="20" stroke="#c9a227" stroke-width="3"/>
+        <line x1="14" y1="20" x2="14" y2="28" stroke="#c9a227" stroke-width="2.5"/>
+        <line x1="58" y1="20" x2="58" y2="28" stroke="#c9a227" stroke-width="2.5"/>
+        <path d="M6 28 Q14 42 22 28 Z" fill="#c9a227"/>
+        <path d="M50 28 Q58 42 66 28 Z" fill="#c9a227"/>
+        <rect x="30" y="54" width="12" height="4" fill="#c9a227"/>
+        <text x="36" y="68" text-anchor="middle" font-family="Arial" font-size="10" font-weight="900" fill="#ff6b6b" letter-spacing="1">GUILTY</text>
+      </svg>
+      <div class="tag">The Hague &middot; ICJ</div>
+      <h3>Myanmar guilty of Rohingya genocide</h3>
+      <p>The ICJ found Myanmar guilty of genocide against the Rohingya &mdash; a first for any international court.</p>
+    </div>
+    <div class="banditem">
+      <svg class="bandicon" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg">
+        <rect width="72" height="72" fill="#171c22"/>
+        <g stroke="#ffb347" stroke-width="3" stroke-linecap="round">
+          <line x1="36" y1="6" x2="36" y2="14"/><line x1="36" y1="50" x2="36" y2="58"/>
+          <line x1="8" y1="32" x2="16" y2="32"/><line x1="56" y1="32" x2="64" y2="32"/>
+          <line x1="16" y1="12" x2="22" y2="18"/><line x1="50" y1="46" x2="56" y2="52"/>
+          <line x1="56" y1="12" x2="50" y2="18"/><line x1="22" y1="46" x2="16" y2="52"/>
+        </g>
+        <circle cx="36" cy="32" r="15" fill="#ff9f1c"/>
+        <circle cx="36" cy="32" r="8" fill="#ff3b30"/>
+        <circle cx="36" cy="32" r="3.5" fill="#fff3b0"/>
+        <text x="36" y="69" text-anchor="middle" font-family="Arial" font-size="11" font-weight="900" fill="#ffffff" letter-spacing="2">NATO</text>
+      </svg>
+      <div class="tag">Ukraine &middot; Poland</div>
+      <h3>Missiles land in Poland; war crosses into NATO</h3>
+      <p>A Russian missile struck Kryvyi Rih, killing 2 and wounding 60. Two Kh-101s and a drone fell on Poland.</p>
+    </div>
+  </div>
+
+  <!-- SMALLER STORIES -->
+  <div class="sechead"><div class="t">MORE FROM <span class="red">SATURDAY</span></div><div class="r">Six more stories from the day</div></div>
+  <div class="grid">
+    <div class="gitem"><svg class="gicon" viewBox="0 0 88 88" xmlns="http://www.w3.org/2000/svg"><rect width="88" height="88" fill="#f3ead0"/><rect x="8" y="10" width="32" height="22" fill="#b22234"/><rect x="8" y="15" width="32" height="3" fill="#fff"/><rect x="8" y="20" width="32" height="3" fill="#fff"/><rect x="8" y="25" width="32" height="3" fill="#fff"/><rect x="8" y="10" width="13" height="11" fill="#3c3b6e"/><rect x="48" y="10" width="32" height="22" fill="#c8102e"/><rect x="58" y="10" width="6" height="22" fill="#fff"/><rect x="48" y="18" width="32" height="6" fill="#fff"/><polyline points="18,58 36,76 72,36" fill="none" stroke="#1e7d32" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/></svg><div class="tag">Europe &middot; Denmark</div><h3>Denmark backs US Greenland deal, 109&ndash;0</h3><p>Denmark ratified the US security deal over Greenland, allowing two new American bases.</p></div>
+    <div class="gitem"><svg class="gicon" viewBox="0 0 88 88" xmlns="http://www.w3.org/2000/svg"><rect width="88" height="88" fill="#f3ead0"/><path d="M4 76 Q14 70 24 76 T44 76 T64 76 T84 76" fill="none" stroke="#1e4fa3" stroke-width="3"/><rect x="6" y="44" width="28" height="7" fill="#666"/><rect x="54" y="44" width="28" height="7" fill="#666"/><rect x="14" y="26" width="5" height="20" fill="#666"/><rect x="68" y="26" width="5" height="20" fill="#666"/><polygon points="44,16 47,26 58,22 51,30 60,34 49,36 52,46 44,38 36,46 39,36 28,34 37,30 30,22 41,26" fill="#ffb347"/><circle cx="44" cy="32" r="6" fill="#c8102e"/></svg><div class="tag">Ukraine</div><h3>Kerch Bridge hit a third time</h3><p>Ukraine hit the Kerch Bridge a third time in four days.</p></div>
+    <div class="gitem"><svg class="gicon" viewBox="0 0 88 88" xmlns="http://www.w3.org/2000/svg"><rect width="88" height="88" fill="#171c22"/><g transform="rotate(45 44 44)"><rect x="39" y="14" width="10" height="34" rx="5" fill="#888" stroke="#cccccc" stroke-width="1.5"/><polygon points="44,4 39,16 49,16" fill="#c8102e"/><polygon points="39,48 31,58 39,54" fill="#cccccc"/><polygon points="49,48 57,58 49,54" fill="#cccccc"/><path d="M44 58 C40 66 40 72 44 80 C48 72 48 66 44 58 Z" fill="#ff7f0e"/></g><circle cx="68" cy="66" r="10" fill="#ff9f1c"/><circle cx="68" cy="66" r="5" fill="#c8102e"/></svg><div class="tag">Middle East &middot; Gulf</div><h3>Iran hits US base in Kuwait, targets Bahrain</h3><p>Iran strikes a U.S. air base in Kuwait and targets Bahrain; the Gulf war widens.</p></div>
+    <div class="gitem"><svg class="gicon" viewBox="0 0 88 88" xmlns="http://www.w3.org/2000/svg"><rect width="88" height="88" fill="#f3ead0"/><polygon points="8,76 32,26 48,58 60,32 80,76" fill="#8a94a6" stroke="#555555" stroke-width="2"/><polygon points="32,26 38,38 26,38" fill="#ffffff"/><polygon points="60,32 65,42 55,42" fill="#ffffff"/><polyline points="62,34 56,44 64,52 58,62 64,72" fill="none" stroke="#c8102e" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg><div class="tag">South America &middot; Peru</div><h3>Magnitude 6.9 quake shakes Peru&rsquo;s Andes</h3><p>A magnitude 6.9 earthquake shakes Peru&rsquo;s Andes; no casualties reported.</p></div>
+    <div class="gitem"><svg class="gicon" viewBox="0 0 88 88" xmlns="http://www.w3.org/2000/svg"><rect width="88" height="88" fill="#f3ead0"/><rect x="8" y="60" width="72" height="16" fill="#999999"/><line x1="8" y1="68" x2="80" y2="68" stroke="#ffffff" stroke-width="3" stroke-dasharray="9 7"/><rect x="14" y="30" width="6" height="32" fill="#333333"/><rect x="20" y="32" width="60" height="10" fill="#ffffff" stroke="#333333" stroke-width="2"/><polygon points="26,32 34,32 29,42 21,42" fill="#c8102e"/><polygon points="42,32 50,32 45,42 37,42" fill="#c8102e"/><polygon points="58,32 66,32 61,42 53,42" fill="#c8102e"/><polygon points="74,32 80,32 76,42 69,42" fill="#c8102e"/></svg><div class="tag">Europe &middot; Estonia</div><h3>Estonia to close border with Russia</h3><p>Estonia to close its border with Russia; Moscow decries a &ldquo;new Iron Curtain&rdquo;.</p></div>
+    <div class="gitem"><svg class="gicon" viewBox="0 0 88 88" xmlns="http://www.w3.org/2000/svg"><rect width="88" height="88" fill="#0f2a4a"/><path d="M44 8 L72 18 V44 Q72 66 44 80 Q16 66 16 44 V18 Z" fill="#1e4fa3" stroke="#ffffff" stroke-width="2.5"/><polygon points="44,24 48,40 64,44 48,48 44,64 40,48 24,44 40,40" fill="#ffffff"/></svg><div class="tag">NATO &middot; Poland</div><h3>NATO vows to defend &ldquo;every inch&rdquo; of Poland</h3><p>Rutte: &ldquo;will defend every inch of Polish territory&rdquo;. Poland seeks AWACS and F-35s.</p></div>
+  </div>
+
+  <!-- WHERE IT HAPPENED -->
+  <div class="sechead"><div class="t">WHERE IT <span class="red">HAPPENED</span></div><div class="r">Every story placed &middot; counts by region</div></div>
+  <div class="mapwrap">
+    <svg class="mapsvg" viewBox="0 0 640 72" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="dotpat" width="7" height="7" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.4" fill="#8f8f8f"/></pattern>
+      </defs>
+      <rect x="0" y="0" width="640" height="72" fill="#f3ead0"/>
+      <ellipse cx="95" cy="22" rx="72" ry="12" fill="url(#dotpat)"/>
+      <ellipse cx="138" cy="54" rx="22" ry="9" fill="url(#dotpat)"/>
+      <ellipse cx="318" cy="20" rx="24" ry="9" fill="url(#dotpat)"/>
+      <ellipse cx="326" cy="46" rx="22" ry="12" fill="url(#dotpat)"/>
+      <ellipse cx="470" cy="24" rx="92" ry="14" fill="url(#dotpat)"/>
+      <ellipse cx="552" cy="58" rx="26" ry="7" fill="url(#dotpat)"/>
+      <g font-family="Arial" font-size="8.5" font-weight="bold" fill="#111">
+        <circle cx="112" cy="20" r="3.5" fill="#c8102e"/><text x="112" y="10" text-anchor="middle">MEXICO</text>
+        <circle cx="316" cy="18" r="3.5" fill="#c8102e"/><text x="316" y="9" text-anchor="middle">THE HAGUE</text>
+        <circle cx="356" cy="24" r="3.5" fill="#c8102e"/><text x="356" y="13" text-anchor="middle">KYIV</text>
+        <circle cx="516" cy="26" r="3.5" fill="#c8102e"/><text x="516" y="14" text-anchor="middle">SHENZHEN</text>
+        <circle cx="340" cy="28" r="3" fill="#1e4fa3"/>
+        <circle cx="470" cy="22" r="3" fill="#1e4fa3"/>
+        <circle cx="150" cy="52" r="3" fill="#1e4fa3"/>
+        <circle cx="420" cy="36" r="3" fill="#1e4fa3"/>
+        <circle cx="96" cy="32" r="3" fill="#1e4fa3"/>
+        <circle cx="300" cy="46" r="3" fill="#1e4fa3"/>
+      </g>
+    </svg>
+    <div class="legend">
+      <div class="lt">STORIES BY REGION</div>
+      <div class="lcounts">Europe <b>10</b> &middot; Asia <b>7</b> &middot; Global <b>5</b> &middot; Middle East <b>5</b> &middot; North America <b>3</b> &middot; South America <b>3</b> &middot; Africa <b>2</b></div>
+      <div class="lnote"><span class="dotr">&#9679;</span> Lead stories &nbsp;&middot;&nbsp; <span class="dotb">&#9679;</span> Other stories. Schematic map &mdash; dot positions approximate, not to scale.</div>
+    </div>
+  </div>
+
+  <!-- ALSO ON SATURDAY -->
+  <div class="sechead"><div class="t">ALSO ON <span class="red">SATURDAY 21 NOVEMBER</span></div><div class="r">Twenty-three more, in brief</div></div>
+  <div class="alsowrap">
+    <ol>
+      <li>IAEA: North Korea expands Yongbyon uranium plant.</li>
+      <li>Nvidia halted H200 AI chip exports to China.</li>
+      <li>Crypto liquidations top $2B; Bitcoin nears $62K.</li>
+      <li>Violence flares in Bangladesh before Hasina&rsquo;s return.</li>
+      <li>US&ndash;Venezuela military deal, 10 months after Maduro.</li>
+      <li>Brazil mosquitoes cut dengue cases by 69%.</li>
+      <li>Trump weighs new strikes on Iran.</li>
+      <li>Iran says it shot down a US drone over Hormuz.</li>
+    </ol>
+    <ol class="mid">
+      <li>Tankers hit near the Strait of Hormuz.</li>
+      <li>FBI probes hack of criminal database.</li>
+      <li>Trump: China agreed to nuclear talks.</li>
+      <li>Trump tells Europe to defund Ukraine.</li>
+      <li>Denmark to expel Russian envoy over plot.</li>
+      <li>France&ndash;Norway first joint nuclear exercise.</li>
+      <li>$22.5M haul in a &ldquo;staggering&rdquo; train heist.</li>
+      <li>South Korea tops UN e-government index.</li>
+    </ol>
+    <ol class="right">
+      <li>Indonesia asks Google about 19,000 removed accounts.</li>
+      <li>French protests, 6th week (82,500).</li>
+      <li>NASA halts Perseverance, Mars Odyssey science.</li>
+      <li>Israel plans West Bank city of 200,000.</li>
+      <li>700,000 displaced in southern Ethiopia.</li>
+      <li>UN talks continue on AI weapons rules.</li>
+      <li>24 dead as a boat capsizes in Nigeria.</li>
+    </ol>
+  </div>
+
+  <!-- DATE CHECK -->
+  <div class="datecheck">
+    <b>DATE CHECK</b> &mdash; Not yet happened, so not shown: COP31&rsquo;s final text, the cartel violence toll, Anthropic&rsquo;s first week.
+    <div class="fine">Sources named beside each story.</div>
+  </div>
+
+</div>
+<script>window.addEventListener('load',function(){document.title='H'+document.documentElement.scrollHeight;});</script>
+</body>
+</html>
